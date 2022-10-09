@@ -15,12 +15,12 @@ import numpy as np
 #import matplotlib.pyplot as plt
 #import plotly.graph_objects as go
 #from wordcloud import WordCloud
-from google.colab import drive
+#from google.colab import drive
 import os
 
 """# Importing the Data"""
 
-drive.mount('/content/drive')
+#drive.mount('/content/drive')
 
 train=pd.read_csv('/content/drive/MyDrive/Project/train.tsv',sep='\t')
 test=pd.read_csv('/content/drive/MyDrive/Project/test.tsv',sep='\t')
