@@ -238,6 +238,7 @@ from sklearn import linear_model
 import lightgbm
 import xgboost
 
+
 """**Storing in pickle file**"""
 
 regression_model=linear_model.Ridge(solver = "saga", fit_intercept=False)
@@ -248,85 +249,51 @@ pickle_out = open("Regression_Model.pkl", mode = "wb")
 pickle.dump(regression_model, pickle_out) 
 pickle_out.close()
 
-"""**Model-1: Ridge Regression**"""
 
-ridge_reg = linear_model.Ridge(solver = "saga", fit_intercept=False)
-print("Ridge Regression (After advanced Text Pre-processing)")
-print("-----------------------------------------------------")
-model_11, mse_11, r_sq_11 = run_model_advText(ridge_reg, X_train, y_train, X_valid, y_valid)
+import streamlit as st
+ 
+# loading the trained model
+pickle_in = open('Regression_Model.pkl', 'rb') 
+Regression_Model = pickle.load(pickle_in)
+ 
+@st.cache()
 
-import math
-
-print("RMSE:",math.sqrt(mse_11))
-
-"""**Model-2: LGBM Regression**"""
-
-lgbm_reg = lightgbm.LGBMRegressor()
-print("LGBM Regression (After advanced Text Pre-processing)")
-print("----------------------------------------------------")
-model_22, mse_22, r_sq_22 = run_model_advText(lgbm_reg, X_train, y_train, X_valid, y_valid)
-
-print("RMSE:",math.sqrt(mse_22))
-
-"""**Model-3: XGB Regression** """
-
-xgb_params = {'n_estimators':500, 'max_depth':8}
-xgb_reg = xgboost.XGBRegressor(**xgb_params)
-print("XGB Regression (After advanced Text Pre-processing)")
-print("---------------------------------------------------")
-model_33, mse_33, r_sq_33 = run_model_advText(xgb_reg, X_train, y_train, X_valid, y_valid)
-
-print("RMSE:",math.sqrt(mse_33))
-
-"""**Results without Advanced Text Pre-Processing**"""
-
-data={'Model': ['Ridge', 'LGBM', 'XGB'],
-        'MSE': [1464.71, 1035.26, 893.99],
-      'R-Suared':[0.02,0.31,0.40]}
-results_without_Adv_txt=pd.DataFrame(data)
-
-results_without_Adv_txt
-
-data={'Model': ['Ridge', 'LGBM', 'XGB'],
-        'MSE': [0.22, 0.29, 0.25],
-      'R-Suared':[0.60,0.48,0.55]}
-results_with_Adv_txt=pd.DataFrame(data)
-
-results_with_Adv_txt
-
-"""Improvement in Model Performance after using Advanced Text Pre-Processing :
-* MSE has now decreased for all models
-* 𝑅2  value has now increased for all models
-However, for Ridge model, the improvement seems the highest. Hence, we will choose Ridge to apply on the test dataset.
-"""
-
-mse_before = [1464.71, 1035.26, 893.99]
-r_sq_before = [0.02,0.31,0.40]
-mse_after = [mse_11, mse_22, mse_33]
-r_sq_after = [r_sq_11, r_sq_22, r_sq_33]
-model_data = {'Model': ['Ridge','LGBM','XGB'],
-              'MSE_without_Advanced_TextProcessing': mse_before,
-              'R_Square_without_Advanced_TextProcessing': r_sq_before,
-              'MSE_with_Advanced_TextProcessing': mse_after,
-              'R_Square_with_Advanced_TextProcessing': r_sq_after}
-data_compare = pd.DataFrame(model_data)
-
-data_compare
-
-"""**Apply Final Ridge Model on Test Dataset and Submission :**"""
-
-predictions = ridge_reg.predict(X_test)
-submission["price"] = np.expm1(predictions)
-submission.head()
-
-submission.to_csv("submission.csv", index = False)
-
-submission
-
-"""**Merging Price Column to the Test Data**"""
-
-test_data_price=test_data.merge(submission, left_on='test_id', right_on='test_id',
-          suffixes=('_left', '_right'))
-
-test_data_price
+# defining the function which will make the prediction using the data which the user inputs 
+def prediction(name, item_condition_id, category_name, brand_name, shipping, item_description):   
+ 
+    # Making predictions 
+    prediction = Regression_Model.predict( 
+        [[name, item_condition_id, category_name, brand_name, shipping, item_description]])
+        
+        
+# this is the main function in which we define our webpage  
+def main():       
+   # front end elements of the web page 
+   html_temp = """ 
+   <div style ="background-color:blue;padding:13px"> 
+   <h1 style ="color:black;text-align:center;">Mercari Price Suggestion ML App</h1> 
+   </div> 
+     """
+      
+   # display the front end aspect
+   st.markdown(html_temp, unsafe_allow_html = True) 
+      
+   # following lines create boxes in which user can enter data required to make prediction 
+   name = st.text('name')
+   item_condition_id = st.selectbox('item_condition_id',(1,2,3,4,5))
+   category_name = st.text('category_name')
+   brand_name = st.text('brand_name')
+   shipping = st.selectbox('shipping',(1,0))
+   item_description = st.text('item_description')
+   result =""
+      
+   # when 'Predict' is clicked, make the prediction and store it 
+   if st.button("Predict"): 
+       result = prediction(name, item_condition_id, category_name, brand_name, shipping, item_description) 
+       st.success('Price for the product is {}'.format(result))
+        
+     
+if __name__=='__main__': 
+    main()
+  
 
