@@ -33,8 +33,8 @@ sklearn
 model_selection 
 #KFold
 metrics 
-mean_squared_error
-r2_score
+#mean_squared_error
+#r2_score
 linear_model
 lightgbm
 xgboost
