@@ -1,15 +1,17 @@
 pandas 
 numpy
 seaborn
-import matplotlib.pyplot as plt
-scikit-learn==1.1.2 
-import plotly.graph_objects as go
-from wordcloud import WordCloud
-from google.colab import drive
-import os
-from string import punctuation
-import string
-import nltk
+matplotlib.pyplot 
+scikit-learn
+plotly.graph_objects
+wordcloud
+WordCloud
+google.colab
+drive
+os
+string
+punctuation
+nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
