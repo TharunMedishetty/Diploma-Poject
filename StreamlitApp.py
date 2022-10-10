@@ -1,5 +1,6 @@
 import pickle
 import streamlit as st
+import scikit-learn
  
 # loading the trained model
 pickle_in = open('Regression_Model.pkl', 'rb') 
