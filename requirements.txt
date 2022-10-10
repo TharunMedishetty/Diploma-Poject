@@ -3,7 +3,7 @@ numpy
 seaborn
 #matplotlib.pyplot 
 scikit-learn
-plotly.graph_objects
+#plotly.graph_objects
 wordcloud
 WordCloud
 google.colab
