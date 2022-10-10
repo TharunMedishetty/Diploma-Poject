@@ -13,7 +13,7 @@ drive
 #string
 #punctuation
 nltk
-nltk.corpus
+#nltk.corpus
 stopwords
 nltk.stem.porter
 PorterStemmer
