@@ -35,7 +35,7 @@ model_selection
 metrics 
 #mean_squared_error
 #r2_score
-linear_model
+#linear_model
 lightgbm
 xgboost
 pickle
