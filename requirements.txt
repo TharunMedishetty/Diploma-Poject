@@ -15,7 +15,7 @@ drive
 nltk
 #nltk.corpus
 stopwords
-nltk.stem.porter
+#nltk.stem.porter
 PorterStemmer
 sklearn.feature_extraction.text 
 CountVectorizer
