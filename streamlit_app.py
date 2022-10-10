@@ -2,7 +2,7 @@ import pickle
 import streamlit as st
  
 # loading the trained model
-pickle_in = open('Regression_Model.pkl', 'rb') 
+pickle_in = open('Regression_Model.pickle', 'rb') 
 Regression_Model = pickle.load(pickle_in)
  
 @st.cache()
