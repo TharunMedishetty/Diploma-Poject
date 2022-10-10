@@ -1,7 +1,7 @@
 pandas 
 numpy
 seaborn
-matplotlib.pyplot 
+#matplotlib.pyplot 
 scikit-learn
 plotly.graph_objects
 wordcloud
