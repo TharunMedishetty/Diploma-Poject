@@ -26,8 +26,8 @@ preprocessing
 #LabelBinarizer
 scipy
 sparse
-vstack
-hstack
+#vstack
+#hstack
 csr_matrix
 model_selection 
 KFold
