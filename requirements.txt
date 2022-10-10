@@ -30,7 +30,7 @@ sparse
 #hstack
 #csr_matrix
 model_selection 
-KFold
+#KFold
 metrics 
 mean_squared_error
 r2_score
