@@ -23,7 +23,7 @@ sklearn
 #CountVectorizer
 #TfidfVectorizer
 preprocessing
-LabelBinarizer
+#LabelBinarizer
 scipy
 sparse
 vstack
