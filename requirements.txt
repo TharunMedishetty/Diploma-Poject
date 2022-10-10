@@ -18,8 +18,8 @@ stopwords
 #nltk.stem.porter
 PorterStemmer
 sklearn
-feature_extraction
-text 
+#feature_extraction
+#text 
 CountVectorizer
 TfidfVectorizer
 preprocessing
