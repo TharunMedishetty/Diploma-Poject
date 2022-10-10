@@ -20,7 +20,7 @@ PorterStemmer
 sklearn
 #feature_extraction
 #text 
-CountVectorizer
+#CountVectorizer
 TfidfVectorizer
 preprocessing
 LabelBinarizer
