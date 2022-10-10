@@ -1,6 +1,7 @@
-pandas 
+pandas
 numpy
 seaborn
+streamlit
 #matplotlib.pyplot 
 scikit-learn
 #plotly.graph_objects
