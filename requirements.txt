@@ -12,15 +12,27 @@ os
 string
 punctuation
 nltk
-from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
-from sklearn.preprocessing import LabelBinarizer
-from scipy.sparse import vstack, hstack, csr_matrix
-from sklearn.model_selection import KFold
-from sklearn.metrics import mean_squared_error, r2_score
-from sklearn import linear_model
-import lightgbm
-import xgboost
-import pickle
+nltk.corpus
+stopwords
+nltk.stem.porter
+PorterStemmer
+sklearn.feature_extraction.text 
+CountVectorizer
+TfidfVectorizer
+sklearn.preprocessing
+LabelBinarizer
+scipy.sparse
+vstack
+hstack
+csr_matrix
+sklearn.model_selection 
+KFold
+sklearn.metrics 
+mean_squared_error
+r2_score
+sklearn 
+linear_model
+lightgbm
+xgboost
+pickle
 
